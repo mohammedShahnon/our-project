@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>git & github</title>
+</head>
+<body>
+  <!-- git & github -->
+  <!--
+    What is git & github?
+      Git: is a version control system that helps you track changes in your code, and it is free and open source
+      GitHub is a web-based platform that allows you to host and share your code with others.
+        (other platforms Similar to github: [gitLab,bitBucket]).
+      github simplify using git.
+      Note: you can use git without github.
+      git has GUI.(it is prefered to use git in command line to develope yourself).
+
+    why you must learn git?
+      1. developers contribute to the same project.(no one has his own project).
+      2. you can revert changes.
+      3. you can see who made the changes.
+      4. you can collaborate to fix issues.
+      5. you can collaborate to create new features.
+      6. you can solve conflicts.
+      7. you can organize features.
+
+    Words you will hear:
+      - repository(repo): which is put the projects in it (each project must has it own repo).
+      - branch: is a copy of the repo for updating the project then return it to the repo.
+      - local repo: is the repo on your Device as PC.
+      - remote repo: is the repo on the server or the github...etc.
+      - commit: is a snapshot or checkPoint in your local repo that has not sent yet to the remote repo.
+      - clone: add a copy from local or remote.(you can add copies from local to other location to compare or try somthing
+        for example which better website: PHP pure or frameWork).
+      - push: is sending the commit to the remote repo.
+      - pull: is getting the commit from the remote repo to the local repo.
+      - Pull Request: is a request to merge the branch to the main branch by telling other about changes.
+
+    Important Note:
+      - Create repository for every Project.
+      - Create anew branch for every feature or enhancement.
+      - no needd to connect to remote repo when working.
+      - anyone can push and pull depend on permissions.
+
+
+    create repo and clone it:
+      1. sign up in github website.
+      2. create a new repo by writing a repo name, describtion, you want it private or public, add README file, and click create repository.
+        Note: README.md (md is a stand for markdown [search about it in wikipedia]).
+        Note: to add heading in README file, you should put # before the script.
+        3. clone the changes by copy the link of the repo from the github then go to the CMD and put it in a specific place in your device
+          by writing the code (git clone TheLink).(Note: when you enter in it, you will see the README file and next to the directory(main -> master)).
+
+    some git commands in cmd:
+      add & reset & commit:
+        git status: to know the status or what is missed or what is happening in the directory.
+        git add fileName(in his full directory): to add the untracked files in the project.
+          Note: you can add all the files by using * instead of directory.
+        git reset head fileName: to reset the changes in the project. for example, you don't want a specific file.
+        git commit -m "message": to commit the changes in the project and put in the local repo.
+
+      push local changes to remote:
+      git branch: to know all your branch in the project.
+      git remote -v: to know all your remote in the project
+      git push remoteName branchName: to push the changes in the local repo to the remote repo (it may reqest your account in github).
+      Note: you can add comment on the team editions in github.
+      Note: if the team add code or anything. it will show to a green color, and if the team remove code or anything, it will show to a red color.
+    
+    pull new changes from remote:
+      Note: if you want to delete repo you will go to the project you want to: 1) delete then settings 2) then danger zone then
+      3) delete this repo 4) then do the other proceses. 
+      to create file from another account as someone from the team (or out of the team) in github do the following:
+        1. it preferes to let the admin invite you to the team (cause you will always get access when you send changes).
+          Note: to invite person you should: 1) go to the project you want the person to be invited 2) then settings.
+          3) then collaborations. 4) then search to the person you want. 5) an invited Email will be sent (he must accept it to invite).
+        2. go to the project in github.
+        3. click on (add file - create new file) then click fork (if you are not from the team).
+        4. add the file you want to be in the project and write what should be in it.
+        5. click on (commit changes) then choose (create...pull request or commit directory....) then commit changes.
+      this file will be in the remote repo; so we will take to the local repo by write (git pull remoteName) code in cmd.
+      git pull remoteName: to pull (fetch and merge) the changes from the remote repo to the local repo.
+
+  -->
+  
+</body>
+</html>
