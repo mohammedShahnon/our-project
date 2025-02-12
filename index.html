@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>git & github</title>
 </head>
+
 <body>
   <!-- git & github -->
   <!--
@@ -91,9 +93,129 @@
       git config --global --unset user.name/user.Email: to remove your name or your email in the project.
       git config --global --edit: it wiil open your editor configuration and set from it.
       touch: create new file.
+
+    generate & test public key:
+      public key: يتعرف على المستخدم وكلمة مروره ولا يسجلهم في كل مرة يدخل يعمل حدث في اي جهاز وهذا ياتي لاشخاص لديهم صلاحيات
+      to create a public key do the following:
+      1) write (ssh-keygen -t rsa -b NumberOfBits -C "Email") in cmd which is generate the key by a specific type of algorithim 
+        and ssh-keygen is stand for Secure SHell Key Generator, -t is meaning a type of algorithim,
+        rsa is a type algorithim(search about them ), -b is number of bits, -C is to add mail client.
+      2) write (cat filePathOfId_rsa.pub): to give you the content of this file.(work for any file).
+      3) copy the content of this file and paste it in the github account in settings - SSH and GPG keys - New SSH key - key.
+      4) write a title of this key then press (Add SSH key) button.
+      5) then do a test in cmd by writing (ssh -T git@github.com) then confirm your password.
+
+    repo from existing project:
+      git init: to initialize empty git repository in directory that we in.
+      to add exist project do the following:
+        1) go to the github and create new repo.
+        2) copy the (git remote ....) regarding to what you are in (HTTPS or SSH) and paste it in cmd.
+        3) copy the (git push ....) regarding to what you are in (HTTPS or SSH) and paste it in cmd.
+      git push -u origin main: it is pull then push.
+
+    pull request with examples:
+      pull request is a request to merge a branch into another branch.
+        note:- if you are from the team or not, you should create fork for the project then edit it then commit as it learned.
+        note:- you can commit to the master directory or in new branch then merge this branch to the master.
+      to create pull request do the following:
+      1) go to the project you want to create pull request then to the pull requests list.
+      2) click on (new pull request) button.
+      3) choose the branch you want to merge into and the branch you want to merge from.
+      4) click on (create pull request) button.
+      5) write a title and description for the pull request then click on (create pull request).
+      6) then click on (merge pull request) button from the admin when we go to pull requests then confirm merge.
+    Note: you can delete the fork and create it again after finshing your pull request without any problem.
+
+    everything about aliases:
+      git config --global alias.aliasName command : to set alias for the command.
+      git config --global alias.aliasName "more than one command" : to set alias for the commands with spaces.
+      git config --global alias.aliasName: to get alias of command.
+      git config --global --unset alias.aliasName: to remove alias of command.
+        Note:- you can open your editor configuration (git config --global --edit) and set from it.
+    Note: search in google "git alias list" to know aliases that is made.
+
+    branching & merge:
+      git branch: to list all branches.
+      git branch branchName: to create new branch.
+      git branch -m branchName: to rename branch.
+      git checkout branchName: to switch to branch.
+      git checkout -b branchName: to create new branch and switch to it.
+      git branch -d branchName: to delete branch if there is no edition to merge.
+      git branch -D branchName: to delete branch even if there is edition to merge.
+      git merge branchName: to merge branch to current branch(it is prefered if it is the master branch).
+        Note:- when you merge from the new branch to the origin it sends a pull request to github account.
+    
+    mastering stash part 1:
+      git stash: to save files that we have not wanted to publish them to branch yet.
+      git stash list: to list all stashes.
+      git stash pop: to apply files in stash to current branch and delete the stash.
       
+    mastering stash part 2:
+      it creates one stash in each stash operation.
+      git stash save "message": to save files with message.
+      git stash apply: to apply stash to current branch.
+      git stash pop stash@{Id}: to apply files in specific stash to current branch and delete the stash.
+      git stash drop: to delete the last stash we created.
+      git stash drop stash@{Id}: to delete specific stash.
+      git stash show: to show files in the last stash we created.
+      git stash show stash@{Id}: to show files in specific stash.
+      git stash clear: to delete all stashes.
+        Note: stash commands will take the last stash we created.
+
+    restore and clean:
+      git restore --staged fileName(or *): to restore files from staging area to untracked files.
+      code fileName: to edit file in visual stedio code.
+      git clean -n: to show the untracked files that will be removed.
+      git clean -f: to remove the untracked files.
+
+    resetting the head:
+      reset: it is used to delete commit that you do not want.
+      head: it is the pointer that highlights to the last commit we create.
+        to know the head use (git log) command.
+          Note: to quit from the log use the key(q).
+        Note: to delete commit that is the head, you have to highlight the head into another commit.
+        Note: each commit has its own hash in github or in (git log) command.
+      git reset --soft theHashOfTheCommit: to delete commits but keep the changes and set the head into the hash that we wrote.
+      git reset --hard theHashOfTheCommit: to delete commits without keeping the changes and set the head into the hash that we wrote.
+      git push reomteName BranchName --force: to make force update to the remote repo and the branch.
+        Note:- it deletes what is before the head that we wrote.
+
+    ignoring files & directories:
+      file that we added to the project and its job is ignoring files:
+        .gitignore: it is a file that we can write the names of files or directories that we do not want to track them in the repo (make them hedden files).
+          Note: we set what we do not need to launch in this file such as anything end with the extention .log (*.log).
+          Note:- if there are exceptions, use the Tag (!) then the exception files or extentions or...etc.
+          Note: if you want to add file in staging area but it is in .gitignore file use the following:
+          git add -f fileName (which means force add).
+      to know more details about git ignore search (git ignore patterns) in google.
+
+    tag and release part 1:
+      tag:- it used to share that you create a new version (tags and leleases) of the project.
+      there are two type of tags which are:
+        1- lightweight tag: it is a simple tag that we can use it to share the version of the project.
+          it is like a pointer that highlights to the commit that we want to share.
+          Note: it is not stored in the local repo, it is stored in the remote repo.
+        2- annotated tag: it is a tag that we can add a message to it and it is stored in the local repo and the remote repo.
+      git tag: to show tags that we have.
+      git tag tagName: to create a new tag (it is prefered to use like v1.0, v1.1, v2.0,... etc).
+      git push origin tagName: to push the version Tag to the remote repo.
+      git tag -a tagName -m "message": to create a new annotated tag (with its own message).
+
+    tag and release part 2:
+      git tag -l "message": to show list of tags that have the message that we wrote.
+      git tag -d tagName: to delete the tag that we created from local repo.
+      git push origin --delete tagName: to delete the tag that we created from remote repo.
+      to create a release for the tag that we have from github, do the following:
+        1- go to the tag that you want to create a release for it.
+        2- click on the tag that you want to create a release for it.
+        3- click on the create release button.
+        4- write the title and the description of the release.
+        5- click on the publish release button.
+
+        thank you. break a leg.
 
   -->
-  
+
 </body>
+
 </html>
